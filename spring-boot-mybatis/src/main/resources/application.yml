@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.22.34.8:5306/test?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root1234
+    # 如果不想配置对数据库连接池做特殊配置的话,以下关于连接池的配置就不是必须的
+    # spring-boot 2 默认采用高性能的 Hikari 作为连接池 更多配置可以参考
+    # https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # 池中维护的最小空闲连接数
+      minimum-idle: 5
+      #池中最大连接数，包括闲置和使用的连接
+      maximum-pool-size: 20
+      auto-commit: true
+      #允许最长空闲时间
+      idle-timeout: 30000
+      #连接池的用户自定义名称，主要显示在日志和JMX 管理控制台，以表示池和池配置，默认自动生成
+      pool-name: qiang-mybatis
+      #控制池中连接的最长生命周期，0 表示不限制，默认1800000即30分钟
+      max-lifetime: 1800000
+      #数据库连接超时时间
+      connection-timeout: 30000
+      #连接测试，SQL根据数据库变化，Oracle 应该写成 select 1 from dual
+      connection-test-query: SELECT 1
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  configuration:
+    jdbc-type-for-null: 'null'
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #当没有为参数提供特定的JDBC类型时，为空值指定JDBC类型
+  #Oracle 建议配置为JdbcType.NULL, 默认是Other
