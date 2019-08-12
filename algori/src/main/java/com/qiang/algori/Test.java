@@ -1,5 +1,6 @@
 package com.qiang.algori;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -110,8 +111,9 @@ public class Test {
 
     public static void main(String[] args) {
         int[] arr = generatorIntArray(100);
+        System.out.println(arr.length+Arrays.toString(arr));
         selectSort(arr);
-        System.out.println(arr);
+        System.out.println(arr.length+Arrays.toString(arr));
 
     }
 }
