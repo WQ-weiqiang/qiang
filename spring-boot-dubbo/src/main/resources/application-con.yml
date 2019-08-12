@@ -1,0 +1,12 @@
+dubbo:
+  application:
+    name: boot-duboo-provider
+  # 指定注册协议和注册地址  dubbo推荐使用zookeeper作为注册中心，并且在start依赖中引入了zookeeper的java客户端Curator
+  registry:
+    protocol: zookeeper
+    address: 172.22.34.8:2181
+  protocol.name: dubbo
+  consumer:
+    check: false
+server:
+  port: 8090

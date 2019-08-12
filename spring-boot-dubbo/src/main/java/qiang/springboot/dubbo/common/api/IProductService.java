@@ -1,6 +1,6 @@
-package qiang.springboot.dubbo.api;
+package qiang.springboot.dubbo.common.api;
 
-import qiang.springboot.dubbo.bean.Product;
+import qiang.springboot.dubbo.common.bean.Product;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ import java.util.List;
 public interface IProductService {
 
     Product queryProductById(int id);
-    List<Product> queryAllProduct();
+    List<Product> queryAllProducts();
 }

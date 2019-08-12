@@ -1,4 +1,4 @@
-package qiang.springboot.dubbo.bean;
+package qiang.springboot.dubbo.common.bean;
 
 import lombok.*;
 
@@ -12,9 +12,6 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 public class Product {
     // 产品序列号
     private int id;

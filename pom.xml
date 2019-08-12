@@ -23,6 +23,7 @@
         <module>spring-boot-druid-mybatis</module>
         <module>spring-boot-dubbo</module>
         <module>algori</module>
+        <module>spring-boot-redis</module>
 
 
     </modules>
