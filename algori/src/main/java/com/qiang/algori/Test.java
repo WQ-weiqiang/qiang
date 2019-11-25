@@ -129,16 +129,8 @@ public class Test {
 //        System.out.println(arr.length+Arrays.toString(arr));
 
         //s(1000);
-        long start = System.currentTimeMillis();
-        System.out.println(f(50));
-        System.out.println(System.currentTimeMillis() - start);
+
     }
 
-    static int f(int n) {
-        //f(0) = 0,f(1) = 1，等价于 n<=2时，f(n) = n。
-        if (n <= 2) {
-            return n;
-        }
-        return f(n - 1) + f(n - 2);
-    }
+
 }
