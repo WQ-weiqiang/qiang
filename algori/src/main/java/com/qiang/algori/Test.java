@@ -108,20 +108,19 @@ public class Test {
         return arr;
     }
 
-    public  static void s(int a){
-        for (int i =1; i<= a; i++) {
+    public static void s(int a) {
+        for (int i = 1; i <= a; i++) {
             int n = 1;
-            for (int j=2; j<a ;j++){
-                if (i%j==0)
+            for (int j = 2; j < a; j++) {
+                if (i % j == 0)
                     n++;
 
             }
-            if (n==2)
-                System.out.println("质数： "+ i);
+            if (n == 2)
+                System.out.println("质数： " + i);
         }
 
     }
-
 
     public static void main(String[] args) {
 //        int[] arr = generatorIntArray(100);
@@ -129,7 +128,17 @@ public class Test {
 //        selectSort(arr);
 //        System.out.println(arr.length+Arrays.toString(arr));
 
-        s(1000);
+        //s(1000);
+        long start = System.currentTimeMillis();
+        System.out.println(f(50));
+        System.out.println(System.currentTimeMillis() - start);
+    }
 
+    static int f(int n) {
+        //f(0) = 0,f(1) = 1，等价于 n<=2时，f(n) = n。
+        if (n <= 2) {
+            return n;
+        }
+        return f(n - 1) + f(n - 2);
     }
 }
