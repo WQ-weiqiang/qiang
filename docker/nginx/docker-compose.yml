@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nginx:
+    image: docker.io/nginx:1
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    ports:
+      - 8080:80
+
+
+    #environment:
+    #  ZOO_MY_ID: 1
+    #  ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+    volumes:
+      #- ./conf:/etc/nginx/nginx.conf:ro
+      - ./www:/user/share/nginx/html:ro
+         
+          

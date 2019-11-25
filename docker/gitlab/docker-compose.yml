@@ -1,0 +1,33 @@
+version: '3'
+services:
+  nginx:
+    image: gitlab/gitlab-ce
+    container_name: gitlab
+    hostname: '172.22.34.9'
+    restart: always
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        gitlab_rails['gitlab_shell_ssh_port'] = 10022
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = "mail.deltaww.com"
+        gitlab_rails['smtp_port'] = 25
+        gitlab_rails['smtp_user_name'] = "SRV-CRADLE"
+        gitlab_rails['smtp_password'] = "P@ssw0rd"
+        gitlab_rails['smtp_domain'] = "mail.deltaww.com"
+        gitlab_rails['smtp_authentication'] = "login"
+        gitlab_rails['smtp_enable_starttls_auto'] = true
+        gitlab_rails['smtp_tls'] = false
+        gitlab_rails['gitlab_email_from'] = 'SRV-CRADLE@deltaww.com' 
+    ports:
+      - 443:443
+      - 80:80
+      - '10022:22'
+    volumes:
+      - ./config:/etc/gitlab
+      - ./logs:/var/log/gitlab
+      - ./data:/var/opt/gitlab
+      - /etc/localtime:/etc/localtime
+
+
+         
+          

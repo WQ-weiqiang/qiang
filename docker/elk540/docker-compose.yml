@@ -1,0 +1,33 @@
+version: '3'
+services:
+  elasticsearch:
+    image: docker.io/elasticsearch:5.4.0
+    container_name: elasticsearch540
+    hostname: elasticsearch540
+    restart: always
+
+  kibana:
+    image: docker.io/kibana:5.4.0
+    container_name: kibana540
+    hostname: kibana540
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    restart: always
+    ports:
+      - "5601:5601"
+
+  logstash:
+    image: logstash:5.4.0
+    volumes:
+      - ./logstash.conf:/etc/logstash.conf
+    container_name: logstash540
+    hostname: logstash540
+    restart: always
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+    command:
+      -f /etc/logstash.conf

@@ -1,0 +1,38 @@
+version: '3'
+services:
+  zoo1:
+    image: docker.io/zookeeper
+    container_name: zoo1
+    hostname: zoo1
+    restart: always
+    ports:
+      - 2181:2181
+
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      #volumes:
+      #- ./data:/var/lib/mysql
+  zoo2:
+    image: docker.io/zookeeper
+    container_name: zoo2
+    hostname: zoo2
+    restart: always
+    ports:
+      - 2182:2181
+
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=aoo1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zoo3:2888:3888;2181
+
+  zoo3:
+    image: docker.io/zookeeper
+    container_name: zoo3
+    hostname: zoo3
+    restart: always
+    ports:
+      - 2183:2181
+
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181

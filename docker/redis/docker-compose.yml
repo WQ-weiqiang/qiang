@@ -1,0 +1,42 @@
+version: '3'
+services:
+  master:
+    image: docker.io/redis:5.0.5-alpine
+    container_name: redis-master
+    restart: always
+    ports:
+      - 6379:6379
+    #        volumes:
+    #           - ./data:/data
+    #            - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server  --requirepass redis
+    networks:
+      - qiang
+
+  slave1:
+    image: docker.io/redis:5.0.5-alpine
+    container_name: redis-slave-1
+    restart: always
+    ports:
+      - 6380:6379
+    #        volumes:
+    #           - ./data:/data
+    #            - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server  --slaveof redis-master 6379 --requirepass slave1 --masterauth redis
+    networks:
+      - qiang
+  slave2:
+    image: docker.io/redis:5.0.5-alpine
+    container_name: redis-slave-2
+    restart: always
+    ports:
+      - 6381:6379
+    #        volumes:
+    #           - ./data:/data
+    #            - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server  --slaveof redis-master 6379 --requirepass slave2 --masterauth redis
+    networks:
+      - qiang
+networks:
+  qiang:
+        

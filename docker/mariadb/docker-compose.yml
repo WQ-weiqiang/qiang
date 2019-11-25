@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mariadb:
+    image: docker.io/mariadb:10.4
+    container_name: mariadb
+    hostname: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=root1234
+    volumes:
+      - ./data:/var/lib/mysql
+    # - ./conf:/etc/mysql/conf.d
+    # - ./init:/docker-entrypoint-initdb.d
+
+#    adminer:
+#        image: adminer
+#        restart: always
+#        ports:
+#          - 8080:8080
