@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableDubbo
-@ComponentScan(basePackages = {"qiang.springboot.dubbo.provider","qiang.springboot.dubbo.common"})
+@ComponentScan(basePackages = {"qiang.springboot.dubbo.provider", "qiang.springboot.dubbo.common"})
 public class DubboProviderApplication {
     public static void main(String[] args) {
         SpringApplication.run(DubboProviderApplication.class);

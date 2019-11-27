@@ -9,8 +9,8 @@ import qiang.base.doman.Qiang;
 public class Hello {
     @Autowired
     Qiang q;
-    @GetMapping("/")
 
+    @GetMapping("/")
     String hello() {
 
         //return "This is hello ";

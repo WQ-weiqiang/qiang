@@ -1,6 +1,7 @@
 package qiang.springboot.dubbo.common.bean;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.Date;
 

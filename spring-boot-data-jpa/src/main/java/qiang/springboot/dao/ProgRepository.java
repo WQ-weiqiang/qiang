@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2019/8/1 14:09
  * @Description
  */
-public interface ProgRepository extends CrudRepository<Programmer,Integer> {
+public interface ProgRepository extends CrudRepository<Programmer, Integer> {
     /*
      * 方法名遵循命名规范的查询 更多命名规范可以参考官方文档所列出的这张表格
      * https://docs.spring.io/spring-data/jpa/docs/2.1.3.RELEASE/reference/html/#jpa.query-methods.query-creation

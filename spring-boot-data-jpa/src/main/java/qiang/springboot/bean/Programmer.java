@@ -15,7 +15,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name="programmer")
+@Table(name = "programmer")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -28,15 +28,15 @@ public class Programmer {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
+    private int id;
     @Column(length = 200)
-    private  String name;
-    private  int age;
+    private String name;
+    private int age;
     @Column(scale = 2)
-    private  float salary;
+    private float salary;
     private Date birthday;
 
-    public Programmer( String name, int age, float salary, Date birthday) {
+    public Programmer(String name, int age, float salary, Date birthday) {
 
         this.name = name;
         this.age = age;

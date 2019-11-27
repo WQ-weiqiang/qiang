@@ -1,4 +1,4 @@
-package  qiang.actuator;
+package qiang.actuator;
 
 
 import org.springframework.boot.SpringApplication;

@@ -12,5 +12,6 @@ import java.util.List;
 public interface IProductService {
 
     Product queryProductById(int id);
+
     List<Product> queryAllProducts();
 }

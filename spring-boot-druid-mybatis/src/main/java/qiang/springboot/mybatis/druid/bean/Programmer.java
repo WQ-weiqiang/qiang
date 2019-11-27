@@ -1,4 +1,4 @@
-package qiang.springboot.mybatis.druid.bean ;
+package qiang.springboot.mybatis.druid.bean;
 
 
 import lombok.AllArgsConstructor;

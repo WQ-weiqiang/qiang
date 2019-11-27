@@ -44,8 +44,10 @@ public class MybatisAnnotationTest {
 
     @Test
     public void selectAll() {
-        List<Programmer> programmers =  mapper.selectAll();
-        programmers.forEach(programmer -> {System.out.println(programmer.toString());});
+        List<Programmer> programmers = mapper.selectAll();
+        programmers.forEach(programmer -> {
+            System.out.println(programmer.toString());
+        });
     }
 
     @Test
