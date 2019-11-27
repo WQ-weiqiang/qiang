@@ -22,7 +22,7 @@
         <module>spring-boot-mybatis</module>
         <module>spring-boot-druid-mybatis</module>
         <module>spring-boot-dubbo</module>
-        <module>algori</module>
+        <module>java-base</module>
         <module>spring-boot-redis</module>
 
 

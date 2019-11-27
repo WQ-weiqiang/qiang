@@ -128,8 +128,7 @@ public class Test {
 //        selectSort(arr);
 //        System.out.println(arr.length+Arrays.toString(arr));
 
-        //s(1000);
-
+        s(1000);
     }
 
 
