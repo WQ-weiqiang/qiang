@@ -15,7 +15,7 @@ public class SortTest {
     @Test
     public void testSort() {
 
-        int[] arr = getIntArray(1000000, 1, 1000);
+        int[] arr = getIntArray(100000, 1, 1000);
 
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.insertSort(arr);
