@@ -1,5 +1,7 @@
 package com.qiang;
 
+import com.hankcs.hanlp.HanLP;
+
 import java.util.Date;
 import java.util.Properties;
 
@@ -41,7 +43,10 @@ public class Test {
         Runtime rt = Runtime.getRuntime();
         System.out.println("Total Memory = " + rt.totalMemory() + " ,Free Memory= " + rt.freeMemory());
 
-        System.out.println("abc" + " = " + 3.2F);
+//        System.out.println("abc" + " = " + 3.2F);
+
+        System.out.println(HanLP.segment("你好，欢迎使用HanLP汉语处理包！"));
+
     }
 
 
