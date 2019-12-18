@@ -1,5 +1,8 @@
 package com.qiang;
 
+import java.util.Date;
+import java.util.Properties;
+
 /**
  * @author Qiang.wei
  * @date 2019/8/9 17:34
@@ -28,7 +31,17 @@ public class Test {
 //        selectSort(arr);
 //        System.out.println(arr.length+Arrays.toString(arr));
 
-        s(100);
+//        s(100);
+
+        System.out.println(new Date());
+        Properties p = System.getProperties();
+        p.list(System.out);
+
+        System.out.println("----------------------------------------");
+        Runtime rt = Runtime.getRuntime();
+        System.out.println("Total Memory = " + rt.totalMemory() + " ,Free Memory= " + rt.freeMemory());
+
+        System.out.println("abc" + " = " + 3.2F);
     }
 
 
