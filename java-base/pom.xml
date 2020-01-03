@@ -21,6 +21,16 @@
             <artifactId>hanlp</artifactId>
             <version>portable-1.7.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.neo4j.driver</groupId>-->
+        <!--            <artifactId>neo4j-java-driver-spring-boot-starter</artifactId>-->
+        <!--            <version>4.0.0-rc1</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
 </project>

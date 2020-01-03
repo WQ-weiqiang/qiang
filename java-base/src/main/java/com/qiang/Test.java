@@ -119,6 +119,7 @@ public class Test {
 //        CustomDictionary.remove("攻城狮");
         System.out.println(CustomDictionary.add("单身狗", "nz 1024 n 1"));
         System.out.println(CustomDictionary.get("单身狗"));
+        System.out.println();
 
         text = "攻城狮逆袭单身狗，迎娶白富美，走上人生巅峰";  // 怎么可能噗哈哈！
 
@@ -133,5 +134,47 @@ public class Test {
 
         // 自定义词典在所有分词器中都有效
         System.out.println(HanLP.segment(text));
+
+        System.out.println("-------------------中国人名识别---------------------");
+        testCase = new String[]{
+                "签约仪式前，秦光荣、李纪恒、仇和等一同会见了参加签约的企业家。",
+                "王国强、高峰、汪洋、张朝阳光着头、韩寒、小四",
+                "张浩和胡健康复员回家了",
+                "王总和小丽结婚了",
+                "编剧邵钧林和稽道青说",
+                "这里有关天培的有关事迹",
+                "龚学平等领导,邓颖超生前",
+        };
+        Segment segment = HanLP.newSegment().enableNameRecognize(true);
+        for (String sentence : testCase) {
+            termList = segment.seg(sentence);
+            System.out.println(termList);
+        }
+
+
+        System.out.println("-------------------音译人名识别---------------------");
+        testCase = new String[]{
+                "一桶冰水当头倒下，微软的比尔盖茨、Facebook的扎克伯格跟桑德博格、亚马逊的贝索斯、苹果的库克全都不惜湿身入镜，这些硅谷的科技人，飞蛾扑火似地牺牲演出，其实全为了慈善。",
+                "世界上最长的姓名是简森·乔伊·亚历山大·比基·卡利斯勒·达夫·埃利奥特·福克斯·伊维鲁莫·马尔尼·梅尔斯·帕特森·汤普森·华莱士·普雷斯顿。",
+        };
+        segment = HanLP.newSegment().enableTranslatedNameRecognize(true);
+        for (String sentence : testCase) {
+            termList = segment.seg(sentence);
+            System.out.println(termList);
+        }
+
+        System.out.println("-------------------关键词提取---------------------");
+        String content = "程序员(英文Programmer)是从事程序开发、维护的专业人员。一般将程序员分为程序设计人员和程序编码人员，但两者的界限并不非常清楚，特别是在中国。软件从业人员分为初级程序员、高级程序员、系统分析员和项目经理四大类。";
+        List<String> keywordList = HanLP.extractKeyword(content, 5);
+        System.out.println(keywordList);
+
+        System.out.println("-------------------自动摘要---------------------");
+        String document = "算法可大致分为基本算法、数据结构的算法、数论算法、计算几何的算法、图的算法、动态规划以及数值分析、加密算法、排序算法、检索算法、随机化算法、并行算法、厄米变形模型、随机森林算法。\n" +
+                "算法可以宽泛的分为三类，\n" +
+                "一，有限的确定性算法，这类算法在有限的一段时间内终止。他们可能要花很长时间来执行指定的任务，但仍将在一定的时间内终止。这类算法得出的结果常取决于输入值。\n" +
+                "二，有限的非确定算法，这类算法在有限的时间内终止。然而，对于一个（或一些）给定的数值，算法的结果并不是唯一的或确定的。\n" +
+                "三，无限的算法，是那些由于没有定义终止定义条件，或定义的条件无法由输入的数据满足而不终止运行的算法。通常，无限算法的产生是由于未能确定的定义终止条件。";
+        List<String> sentenceList = HanLP.extractSummary(document, 3);
+        System.out.println(sentenceList);
     }
 }
