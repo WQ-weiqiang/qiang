@@ -1,0 +1,16 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: base
+swagger:
+  enabled: true
+
+qiang:
+  name:
+    qiang
+  age:
+    ${random.int[20,40]}
+  topic:
+    ${qiang.name} is ${qiang.age} old
+

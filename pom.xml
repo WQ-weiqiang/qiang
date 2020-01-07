@@ -15,14 +15,13 @@
     <name>qiang</name>
     <description>Demo project for Spring Boot</description>
     <modules>
-        <module>spring-boot-base</module>
+        <module>spring-boot-web</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-jpa</module>
         <module>spring-boot-memcached</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-druid-mybatis</module>
         <module>spring-boot-dubbo</module>
-        <module>java-base</module>
         <module>spring-boot-redis</module>
 
 
@@ -34,10 +33,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
