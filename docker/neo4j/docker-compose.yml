@@ -1,0 +1,18 @@
+version: '3'
+services:
+  neo4j:
+    image: docker.io/neo4j:3.5
+    container_name: neo4j
+    hostname: neo4j
+    restart: always
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=neo4j/12345678
+    volumes:
+      # - ./conf:/var/lib/neo4j/conf
+      # - ./mnt:/var/lib/neo4j/import
+      # - ./plugins:/plugins
+      - ./data:/data
+    #: - ./logs:/var/lib/neo4j/logs

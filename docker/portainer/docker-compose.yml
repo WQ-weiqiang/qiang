@@ -1,0 +1,13 @@
+version: '3'
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    hostname: portainer
+    restart: always
+    ports:
+      - 58000:8000
+      - 59000:9000
+    volumes:
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock

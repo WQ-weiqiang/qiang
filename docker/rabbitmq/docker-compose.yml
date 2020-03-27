@@ -17,4 +17,5 @@ services:
       - qiang
 networks:
   qiang:
+    driver: bridge
         

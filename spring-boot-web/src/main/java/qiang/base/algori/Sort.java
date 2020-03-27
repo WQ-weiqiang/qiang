@@ -16,7 +16,7 @@ public class Sort {
 
         for (int i = 1; i < arr.length; i++) {
             int tmp = arr[i];
-            int j = 1;
+            int j = i;
             while (j > 0 && tmp < arr[j - 1]) {
                 arr[j] = arr[j - 1];
                 j--;
@@ -180,6 +180,35 @@ public class Sort {
         arr[j] = temp;
     }
 
+    /**
+     * 快速排序
+     */
+    public static void quickSort2(int[] arr) {
+        sort2(arr, 0, arr.length - 1);
+    }
+
+    private static void sort2(int[] arr, int left, int right) {
+        if (left > right) {
+            return;
+        }
+        int base = arr[left];
+        int i = left, j = right;
+        while (i != j) {
+            while (i < j && arr[j] >= base)
+                j--;
+            while (i < j && arr[i] <= base)
+                i++;
+            if (i < j) {
+                int tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+        arr[left] = arr[i];
+        arr[i] = base;
+        sort2(arr, left, i - 1);
+        sort2(arr, i + 1, right);
+    }
 
     /**
      * 堆排序

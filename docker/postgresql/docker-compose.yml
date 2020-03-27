@@ -1,0 +1,42 @@
+version: '3'
+services:
+  #  mongo:
+  #    image: docker.io/mongo:4.0
+  #    container_name: mongo
+  #    hostname: mongo
+  #    restart: always
+  #    ports:
+  #      - 9991:27017
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: mongo
+  #     MONGO_INITDB_ROOT_PASSWORD: mongo
+  #    volumes:
+  #      - ./mongo/db:/data/db
+  #      - /etc/localtime:/etc/localtime
+  postgresql:
+    image: docker.io/postgres:9.6-alpine
+    container_name: postgresql96
+    hostname: postgresql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - 9992:5432
+    volumes:
+      #      - ./postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./postgresql/data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime
+#  neo4j:
+#    image: docker.io/neo4j:4.0
+#    container_name: neo4j
+#    hostname: neo4j
+#    restart: always
+#    ports:
+#      - 9993:7474
+#      - 9994:7687
+#    environment:
+#      NEO4J_AUTH: neo4j/12345678
+#    volumes:
+#      - ./neo4j/data:/data
+#      - ./neo4j/logs:/logs
+#      - /etc/localtime:/etc/localtime
