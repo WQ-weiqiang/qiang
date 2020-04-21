@@ -19,3 +19,6 @@ mvnw.cmd
 # log #
 **/log
 *.log
+
+# docker data #
+**/db

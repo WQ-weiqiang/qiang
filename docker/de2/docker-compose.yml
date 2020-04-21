@@ -1,0 +1,51 @@
+version: '3'
+services:
+  mongo:
+    image: docker.io/mongo:4.0
+    container_name: mongo
+    hostname: mongo
+    restart: always
+    ports:
+      - 9991:27017
+    #   environment:
+    #     MONGO_INITDB_ROOT_USERNAME: mongo
+    #     MONGO_INITDB_ROOT_PASSWORD: mongo
+    volumes:
+      - mongo_db:/data/db
+
+  postgresql:
+    image: docker.io/postgres:9.6-alpine
+    container_name: postgresql96
+    hostname: postgresql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - 9992:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  neo4j:
+    image: docker.io/neo4j:4.0
+    container_name: neo4j
+    hostname: neo4j
+    restart: always
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      NEO4J_AUTH: neo4j/123456
+    volumes:
+      - neo4j:/data
+  # mongo-express:
+  #   image: mongo-express
+  #   container_name: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+#    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: mongo
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: mongo
+volumes:
+  mongo_db:
+  postgres:
+  neo4j:
