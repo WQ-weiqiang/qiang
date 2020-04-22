@@ -1,0 +1,63 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.6.0
+    container_name: elasticsearch
+    hostname: elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+    expose:
+      - 9200
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: kibana:7.6.0
+    container_name: kibana
+    hostname: kibana
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    restart: always
+    ports:
+      - 5601:5601
+
+
+  #  logstash:
+  #    image: docker.io/logstash
+  #    volumes:
+  #      - ./logstash/logstash.conf:/etc/logstash.conf
+  #    container_name: logstash
+  #    hostname: logstash
+  #    links:
+  #      - elasticsearch
+  #    depends_on:
+  #      - elasticsearch
+  #    command:
+  #      -f /etc/logstash.conf
+  fluentd:
+    build: ./fluentd
+    container_name: fluentd
+    hostname: fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    links:
+      - "elasticsearch"
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+  web:
+    image: httpd
+    depends_on:
+      - fluentd
+    ports:
+      - "1080:80" #避免和默认的80端口冲突
+    links:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 172.22.34.43:24224
+        tag: httpd.access

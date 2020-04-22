@@ -1,6 +1,7 @@
 package qiang.web.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class Hello {
      */
     //@ApiIgnore
     @ApiOperation(value = "简短描述", notes = "详细描述")
-    //@ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long", paramType = "query")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long", paramType = "query")
     @GetMapping("/")
     String hello() {
 

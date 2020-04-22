@@ -1,0 +1,60 @@
+version: '3'
+
+volumes:
+  mongo_data: {}
+  postgresql_data: {}
+  neo4j_data: {}
+  neo4j_logs: {}
+
+services:
+  api:
+    image: openjdk:11-jre-slim
+    ports:
+      - 8085:8085
+    volumes:
+      - /etc/timezone:/etc/timezone
+      - ./target/app-0.0.1-SNAPSHOT.jar:/app.jar:ro
+    command: java -jar app.jar
+    depends_on:
+      - mongo
+      - postgresql
+      - neo4j
+    network_mode: host
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: 172.22.34.43:24224
+        tag: kms-api
+  mongo:
+    image: docker.io/mongo:4.0
+    ports:
+      - 9991:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    volumes:
+      - mongo_data:/data/db
+      - /etc/localtime:/etc/localtime:ro
+
+  postgresql:
+    image: docker.io/postgres:9.6-alpine
+    ports:
+      - 9992:5432
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+    volumes:
+      - ./postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - postgresql_data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+
+  neo4j:
+    image: neo4j:4.0
+    ports:
+      - 9993:7474
+      - 9994:7687
+    environment:
+      NEO4J_AUTH: neo4j/12345678
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - /etc/localtime:/etc/localtime:ro
