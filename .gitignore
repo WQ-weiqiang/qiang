@@ -19,3 +19,4 @@ mvnw.cmd
 # log #
 **/log
 *.log
+/docker/de2/

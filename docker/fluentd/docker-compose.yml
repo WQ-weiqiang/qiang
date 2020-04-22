@@ -1,0 +1,15 @@
+version: '3'
+services:
+  fluentd:
+    build: .
+    image: qiang/fluentd
+    container_name: fluentd
+    hostname: fluentd
+    volumes:
+      - ./conf:/fluentd/etc
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - ./logs:/var/logs
+
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
