@@ -4,7 +4,7 @@ services:
     image: mysql:8
     container_name: mysql8
     ports:
-      - 5306:3306
+      - 3306:3306
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root1234
@@ -15,8 +15,9 @@ services:
       --explicit_defaults_for_timestamp=true
       --lower_case_table_names=1
       --max_allowed_packet=128M
-      #volumes:
-      #  - ./db:/var/lib/mysql
+    volumes:
+      - e://mysql/db:/var/lib/mysql
+    #  - ./db:/var/lib/mysql
     #            - "./conf/my.cnf:/etc/mysql/my.cnf"
     #            - "./init:/docker-entrypoint-initdb.d"
 #    adminer: 
