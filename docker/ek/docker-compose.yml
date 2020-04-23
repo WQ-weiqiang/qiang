@@ -37,27 +37,28 @@ services:
   #      - elasticsearch
   #    command:
   #      -f /etc/logstash.conf
-  fluentd:
-    build: ./fluentd
-    container_name: fluentd
-    hostname: fluentd
-    volumes:
-      - ./fluentd/conf:/fluentd/etc
-    links:
-      - "elasticsearch"
-    ports:
-      - "24224:24224"
-      - "24224:24224/udp"
-  web:
-    image: httpd
-    depends_on:
-      - fluentd
-    ports:
-      - "1080:80" #避免和默认的80端口冲突
-    links:
-      - fluentd
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: 172.22.34.43:24224
-        tag: httpd.access
+#  fluentd:
+#    build: ./fluentd
+#    container_name: fluentd
+#    hostname: fluentd
+#    volumes:
+#      - ./fluentd/conf:/fluentd/etc
+#      - /var/lib/docker/containers:/var/lib/docker/containers
+#      - ./fluentd/logs:/var/logs
+#
+#    ports:
+#      - "24224:24224"
+#      - "24224:24224/udp"
+#  web:
+#    image: httpd
+#    depends_on:
+#      - fluentd
+#    ports:
+#      - "1080:80" #避免和默认的80端口冲突
+#    links:
+#      - fluentd
+#    logging:
+#      driver: fluentd
+#      options:
+#        fluentd-address: 172.22.34.43:24224
+#        tag: httpd.access
