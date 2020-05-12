@@ -89,7 +89,7 @@ public class SortTest {
 
         int[] arr2 = Sort.selectionSort(arr);
         System.out.println("排序时间： " + (System.currentTimeMillis() - start) + " ms");
-        Arrays.stream(arr2).forEach(System.out::println);
+//        Arrays.stream(arr2).forEach(System.out::println);
 
     }
 
@@ -98,9 +98,9 @@ public class SortTest {
         int[] arr = getIntArray(10, 1, 100);
 
         long start = System.currentTimeMillis();
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
         int[] arr2 = Sort.insertSort(arr);
-        System.out.println(Arrays.toString(arr2));
+//        System.out.println(Arrays.toString(arr2));
         System.out.println("插入排序时间： " + (System.currentTimeMillis() - start) + " ms");
 
     }
@@ -108,24 +108,24 @@ public class SortTest {
     @Test
     public void shellSort() {
 
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
         long start = System.currentTimeMillis();
 
         int[] arr2 = Sort.shellSort(arr);
         System.out.println("希尔排序时间： " + (System.currentTimeMillis() - start) + " ms");
 
-        Arrays.stream(arr2).forEach(System.out::println);
+//        Arrays.stream(arr2).forEach(System.out::println);
     }
 
 
     @Test
     public void mergeSort() {
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.mergeSort(arr);
         System.out.println("归并排序时间： " + (System.currentTimeMillis() - start) + " ms");
 
-        Arrays.stream(arr2).forEach(System.out::println);
+//        Arrays.stream(arr2).forEach(System.out::println);
     }
 
     @Test
@@ -133,16 +133,16 @@ public class SortTest {
         int[] arr = getIntArray(10, 1, 1000);
 
         long start = System.currentTimeMillis();
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
         int[] arr2 = Sort.quickSort(arr);
-        System.out.println(Arrays.toString(arr2));
+//        System.out.println(Arrays.toString(arr2));
         System.out.println("快速排序时间： " + (System.currentTimeMillis() - start) + " ms");
 
     }
 
     @Test
     public void heapSort() {
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
 
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.heapSort(arr);
@@ -153,7 +153,7 @@ public class SortTest {
 
     @Test
     public void countSort() {
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
 
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.countingSort(arr);
@@ -164,7 +164,7 @@ public class SortTest {
 
     @Test
     public void bucketSort() {
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
 
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.bucketSort(arr);
@@ -175,7 +175,7 @@ public class SortTest {
 
     @Test
     public void radixSort() {
-        int[] arr = getIntArray(100000, 1, 100);
+        int[] arr = getIntArray(100, 1, 100);
 
         long start = System.currentTimeMillis();
         int[] arr2 = Sort.radixSort(arr);
